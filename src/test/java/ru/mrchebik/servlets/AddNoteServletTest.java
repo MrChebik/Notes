@@ -2,6 +2,7 @@ package ru.mrchebik.servlets;
 
 import org.junit.Test;
 import org.mockito.Mockito;
+import ru.mrchebik.interfaces.Note;
 import ru.mrchebik.store.Notes_CACHE;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class AddNoteServletTest extends Mockito {
 
+    final Notes_CACHE cache = new Notes_CACHE();
+
     @Test
     public void doPost() throws ServletException, IOException {
         HttpServletRequest request = mock(HttpServletRequest.class);
@@ -26,11 +29,11 @@ public class AddNoteServletTest extends Mockito {
         when(request.getParameter("title")).thenReturn("test");
         when(request.getParameter("text")).thenReturn("test");
 
-        assertTrue(Notes_CACHE.getNotes().isEmpty());
+        assertTrue(cache.getNotes().isEmpty());
 
         new AddNoteServlet().doPost(request, response);
 
-        assertFalse(Notes_CACHE.getNotes().isEmpty());
+        assertFalse(cache.getNotes().isEmpty());
 
         verify(request, atLeast(1)).getParameter("title");
         verify(request, atLeast(1)).getParameter("text");
