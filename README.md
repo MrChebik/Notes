@@ -11,6 +11,5 @@ The technologies, that are used:
 
 ## Running
 ```
-mvn clean
 mvn clean package
 ```
