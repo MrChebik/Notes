@@ -2,14 +2,13 @@
 Notes can help you to create notes.
 
 The technologies, that are used:
-- Servlets
-- JSP, JSTL
-- HTML, CSS, XML
+- Servlet
+- JSP
+- JS, HTML, CSS, XML
 - Maven
 - Tomcat
-- JUnit
-- Mockito
-- Jacoco
+- JUnit, Mockito, Jacoco
+- Hibernate
 
 ## Running
 Using Tomcat to open the link: ~/index.html
