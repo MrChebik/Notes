@@ -29,6 +29,6 @@
                 </tr>
             </form>
         </table>
-        <a href="/notes">Back</a>
+        <a href="/views/Notes.jsp">Back</a>
     </body>
 </html>

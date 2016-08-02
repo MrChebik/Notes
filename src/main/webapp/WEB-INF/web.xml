@@ -13,6 +13,16 @@
     </welcome-file-list>
 
     <servlet>
+        <servlet-name>SignInUpServlet</servlet-name>
+        <servlet-class>ru.mrchebik.servlets.SignInUpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignInUpServlet</servlet-name>
+        <url-pattern>/notes/sign</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddNoteServlet</servlet-name>
         <servlet-class>ru.mrchebik.servlets.AddNoteServlet</servlet-class>
     </servlet>

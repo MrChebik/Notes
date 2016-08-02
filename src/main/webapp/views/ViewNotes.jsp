@@ -10,7 +10,7 @@
 <html>
     <head>
         <title>Your notes</title>
-        <link rel="stylesheet" type="text/css" href="/css/file.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/css/views/ViewNotes.css" media="all">
     </head>
     <body>
     <c:choose>
@@ -33,6 +33,6 @@
             </table>
         </c:otherwise>
     </c:choose>
-    <a href="/notes/view">Back</a>
+    <a href="/views/Notes.jsp">Back</a>
 </body>
 </html>

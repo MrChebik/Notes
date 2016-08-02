@@ -1,0 +1,10 @@
+input[type="text"] {
+    width: 95px;
+    padding: 2px;
+    border: 1px solid black;
+}
+
+.inputs {
+    width: 120px;
+    padding-left: 48px;
+}
