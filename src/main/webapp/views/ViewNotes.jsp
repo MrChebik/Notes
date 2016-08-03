@@ -33,6 +33,6 @@
             </table>
         </c:otherwise>
     </c:choose>
-    <a href="/views/Notes.jsp">Back</a>
+    <a href="/views/Notes.html">Back</a>
 </body>
 </html>

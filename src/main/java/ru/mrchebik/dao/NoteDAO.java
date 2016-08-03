@@ -40,11 +40,4 @@ public class NoteDAO extends DAO {
             return note;
         });
     }
-
-    public Object delete(final long id) {
-        return commandFactory.transaction(() -> {
-            getSession().delete(get(id));
-            return null;
-        });
-    }
 }

@@ -30,7 +30,7 @@ public class SignInUpServlet extends HttpServlet {
             try {
                 userDAO.add(new User(request.getParameter("login"), request.getParameter("password")));
             } catch (TransactionException e) {
-                request.getRequestDispatcher("/views/sign/Dublicate.jsp").forward(request, response);
+                request.getRequestDispatcher("/views/sign/Dublicate.html").forward(request, response);
             }
         }
 
@@ -38,9 +38,9 @@ public class SignInUpServlet extends HttpServlet {
         try {
             user = userDAO.get(request.getParameter("login"));
         } catch (NoSuchElementException e) {
-            request.getRequestDispatcher("/views/sign/NotRegister.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/sign/NotRegister.html").forward(request, response);
         }
         request.getSession().setAttribute("idUser", user.getId());
-        request.getRequestDispatcher("/views/Notes.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/Notes.html").forward(request, response);
     }
 }

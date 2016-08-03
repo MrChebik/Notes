@@ -32,20 +32,4 @@ public class UserDAO extends DAO {
             return user.iterator().next();
         });
     }
-
-    public User get(final long id) {
-        return commandFactory.transaction(() -> {
-            Query query = getSession().createQuery("from ru.mrchebik.entity.User where id = :id").setLong("id", id);
-            List<User> user = query.list();
-            return user.iterator().next();
-        });
-    }
-
-    public Object delete(final long id) {
-        return commandFactory.transaction(() -> {
-            getSession().delete(get(id));
-            return null;
-        });
-    }
-
 }
