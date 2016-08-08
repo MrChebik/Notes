@@ -1,18 +1,16 @@
 package ru.mrchebik.dao;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Created by mrchebik on 22.07.16.
  */
 public class DAO {
+    private static final Logger logger = Logger.getAnonymousLogger();
     private static final ThreadLocal session = new ThreadLocal();
     private static final SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 

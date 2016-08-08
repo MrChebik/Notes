@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.mrchebik.entity.Note;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by mrchebik on 03.08.16.
@@ -19,7 +19,7 @@ public class NoteDAOTest {
 
     @Test
     public void addAndGet() throws Exception {
-        assertEquals(noteDAO.get(0).get(0).getTitle(), "test");
-        assertEquals(noteDAO.get(0).get(0).getText(), "test");
+        assertEquals(noteDAO.findNotes(0).get(0).getTitle(), "test");
+        assertEquals(noteDAO.findNotes(0).get(0).getText(), "test");
     }
 }

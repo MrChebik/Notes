@@ -1,7 +1,10 @@
 package ru.mrchebik.dao;
 
 import org.hibernate.Query;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.mrchebik.command.CommandFactory;
+import ru.mrchebik.data.UserRepository;
 import ru.mrchebik.entity.User;
 
 import java.util.List;
@@ -9,10 +12,13 @@ import java.util.List;
 /**
  * Created by mrchebik on 22.07.16.
  */
-public class UserDAO extends DAO {
+@Service
+@Transactional
+public class UserDAO extends DAO implements UserRepository {
 
     private final CommandFactory commandFactory = new CommandFactory();
 
+    @Override
     public User add(final User user) {
         return commandFactory.transaction(() -> {
             try {
@@ -25,7 +31,8 @@ public class UserDAO extends DAO {
         });
     }
 
-    public User get(final String username) {
+    @Override
+    public User findUser(final String username) {
         return commandFactory.transaction(() -> {
             Query query = getSession().createQuery("from ru.mrchebik.entity.User where name = :username").setString("username", username);
             List<User> user = query.list();

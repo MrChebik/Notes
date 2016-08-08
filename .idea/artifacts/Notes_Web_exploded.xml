@@ -2,7 +2,6 @@
   <artifact type="exploded-war" name="Notes:Web exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/Notes_Web_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="Notes/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Notes" />
@@ -15,14 +14,16 @@
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:3.6.9.Final" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-commons-annotations:3.2.0.Final" />
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
-          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.1" />
           <element id="library" level="project" name="Maven: javassist:javassist:3.12.1.GA" />
           <element id="library" level="project" name="Maven: javax.transaction:jta:1.1" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.39" />
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
+          <element id="library" level="project" name="Spring" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="Notes/web/Web" />
     </root>
   </artifact>
 </component>
