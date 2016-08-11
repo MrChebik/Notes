@@ -1,7 +1,5 @@
 package ru.mrchebik.command;
 
-import ru.mrchebik.interfaces.Command;
-
 import ru.mrchebik.dao.DAO;
 
 /**

@@ -1,4 +1,4 @@
-package ru.mrchebik.interfaces;
+package ru.mrchebik.command;
 
 /**
  * Created by mrchebik on 02.08.16.

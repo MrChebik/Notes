@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Sign up</title>
-    <link rel="stylesheet" type="text/css" href=<c:url value="/resources/css/SignInUp.css"/>>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/SignInUp.css"/>">
     <script type="text/javascript" src="<c:url value="/resources/js/SignInUp.js"/>"></script>
 </head>
 <body>
