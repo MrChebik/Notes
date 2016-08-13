@@ -1,5 +1,6 @@
 package ru.mrchebik.web;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.mrchebik.data.UserRepository;
@@ -18,6 +19,14 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  * Created by mrchebik on 09.08.16.
  */
 public class RegisterControllerTest {
+    private MockMvc mockMvc;
+
+    @Before
+    public void before() {
+        RegisterController controllerDefault = new RegisterController();
+        mockMvc = standaloneSetup(controllerDefault).build();
+    }
+
     @Test
     public void testRegisterPage() throws Exception {
         List<User> expectedUsers = new ArrayList<>();
@@ -30,5 +39,15 @@ public class RegisterControllerTest {
         MockMvc mockMvc = standaloneSetup(controller).build();
 
         mockMvc.perform(get("/register")).andExpect(view().name("SignInUp"));
+    }
+
+    @Test
+    public void testDuplicatePage() throws Exception {
+        mockMvc.perform(get("/register/duplicate")).andExpect(view().name("Duplicate"));
+    }
+
+    @Test
+    public void testNotRegisterPage() throws Exception {
+        mockMvc.perform(get("/register/notExists")).andExpect(view().name("NotRegister"));
     }
 }

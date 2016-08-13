@@ -3,7 +3,6 @@ package ru.mrchebik.web;
 import org.hibernate.TransactionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.mrchebik.data.UserRepository;
@@ -23,6 +22,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class RegisterController {
     private UserRepository userRepository;
 
+    public RegisterController() {
+
+    }
+
     @Autowired
     public RegisterController(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -36,14 +39,13 @@ public class RegisterController {
     @RequestMapping(method = POST)
     public String register(@RequestParam("hide") String hide,
                            @RequestParam("login") String login,
-                           @RequestParam("password") String password,
-                           Model model) {
+                           @RequestParam("password") String password) {
 
         if (hide.equals("up")) {
             try {
                 userRepository.add(new User(login, password));
             } catch (TransactionException e) {
-                return "redirect:duplicate";
+                return "redirect:/register/duplicate";
             }
         }
 
@@ -51,9 +53,19 @@ public class RegisterController {
         try {
             user = userRepository.findUser(login);
         } catch (NoSuchElementException e) {
-            return "redirect:notRegister";
+            return "redirect:/register/notExists";
         }
         UserSession.setId(user.getId());
         return "redirect:notes";
+    }
+
+    @RequestMapping(value = "/duplicate", method = GET)
+    public String duplicate() {
+        return "Duplicate";
+    }
+
+    @RequestMapping(value = "/notExists", method = GET)
+    public String notRegister() {
+        return "NotRegister";
     }
 }
