@@ -10,10 +10,10 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 /**
  * Created by mrchebik on 06.08.16.
  */
-public class RegisterStageControllerTest {
+public class IndexControllerTest {
     @Test
     public void testRegisterStagePage() throws Exception {
-        RegisterStageController controller = new RegisterStageController();
+        IndexController controller = new IndexController();
         MockMvc mockMvc = standaloneSetup(controller).build();
 
         mockMvc.perform(get("/")).andExpect(view().name("index"));
