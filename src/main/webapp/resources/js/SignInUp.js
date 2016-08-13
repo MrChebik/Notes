@@ -6,7 +6,7 @@ var error = 1;
 function check(id) {
     var element = document.getElementById(id);
 
-    if (element.value.length < 4 || element.value.length > 12) {
+    if (element.value.length < 4 || element.value.length > (element.value != password ? 12 : 16)) {
         element.style.borderColor = 'red';
         error = 1;
     } else {

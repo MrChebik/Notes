@@ -12,14 +12,14 @@ public class UserTest {
 
     @Test
     public void getName() throws Exception {
-        assertTrue(user.getName().equals("test"));
+        assertTrue(user.getUsername().equals("test"));
     }
 
     @Test
     public void setName() throws Exception {
-        user.setName("test1");
-        assertTrue(user.getName().equals("test1"));
-        user.setName("test");
+        user.setUsername("test1");
+        assertTrue(user.getUsername().equals("test1"));
+        user.setUsername("test");
     }
 
     @Test

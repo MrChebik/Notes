@@ -13,6 +13,6 @@
 </head>
 <body>
 <h1>Welcome to the Notes</h1>
-<a href="<c:url value="/register"/>">Sign in/up</a>
+<a href="<c:url value="/register"/>">Register/Login</a>
 </body>
 </html>

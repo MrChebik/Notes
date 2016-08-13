@@ -34,7 +34,7 @@ public class UserDAO extends DAO implements UserRepository {
     @Override
     public User findUser(final String username) {
         return commandFactory.transaction(() -> {
-            Query query = getSession().createQuery("from ru.mrchebik.entity.User where name = :username").setString("username", username);
+            Query query = getSession().createQuery("from ru.mrchebik.entity.User where username = :username").setString("username", username);
             List<User> user = query.list();
             return user.iterator().next();
         });

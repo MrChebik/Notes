@@ -10,25 +10,25 @@ import javax.persistence.*;
 public class User {
 
     private long id;
-    private String name;
+    private String username;
     private String password;
 
     public User() {
 
     }
 
-    public User(String name, String password) {
-        this.name = name;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
     @Column(unique = true)
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public String getPassword() {

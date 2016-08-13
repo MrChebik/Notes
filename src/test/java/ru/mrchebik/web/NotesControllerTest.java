@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
@@ -48,6 +49,13 @@ public class NotesControllerTest {
         when(mockRepository.add(new Note("test", "test"))).thenReturn(expectedNotes.get(0));
 
         mockMvc.perform(get("/notes/add")).andExpect(view().name("AddNote"));
+
+        mockMvc.perform(post("/notes/add")
+                .param("title", "title")
+                .param("test", "text"))
+                .andExpect(redirectedUrl(null));
+
+        //verify(mockRepository, atLeastOnce()).add(new Note("test", "test"));
     }
 
     @Test

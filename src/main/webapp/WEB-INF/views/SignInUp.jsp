@@ -18,8 +18,8 @@
     <form id="form1" method="post">
         <table>
             <tr>
-                <td>Login:</td>
-                <td><input id="login" type="text" name="login" oninput="check('login')"></td>
+                <td>Username:</td>
+                <td><input id="username" type="text" name="username" oninput="check('username')"></td>
             </tr>
             <tr>
                 <td>Password:</td>

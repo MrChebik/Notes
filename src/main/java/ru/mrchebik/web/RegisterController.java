@@ -38,12 +38,12 @@ public class RegisterController {
 
     @RequestMapping(method = POST)
     public String register(@RequestParam("hide") String hide,
-                           @RequestParam("login") String login,
+                           @RequestParam("username") String username,
                            @RequestParam("password") String password) {
 
         if (hide.equals("up")) {
             try {
-                userRepository.add(new User(login, password));
+                userRepository.add(new User(username, password));
             } catch (TransactionException e) {
                 return "redirect:/register/duplicate";
             }
@@ -51,7 +51,7 @@ public class RegisterController {
 
         User user;
         try {
-            user = userRepository.findUser(login);
+            user = userRepository.findUser(username);
         } catch (NoSuchElementException e) {
             return "redirect:/register/notExists";
         }
