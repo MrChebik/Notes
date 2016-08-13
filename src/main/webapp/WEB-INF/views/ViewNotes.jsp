@@ -35,7 +35,7 @@
 
         <c:choose>
             <c:when test="${pages > 1}">
-                <form id="form1" action="<c:url value="/notes/view"/>" method="get">
+                <form id="form1" method="get">
                     <br>
                     <input id="007" type="hidden" name="hide">
                     <c:choose>

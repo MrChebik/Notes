@@ -14,7 +14,7 @@
     <body>
         <h3>Add note.</h3>
         <table>
-            <form action="<c:url value="/notes/add"/>" method="post">
+            <form method="post">
                 <tr>
                     <td>Title:</td>
                     <td><input type="text" name="title"></td>

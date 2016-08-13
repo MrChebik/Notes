@@ -15,7 +15,7 @@
 </head>
 <body>
 <div>
-    <form id="form1" action="<c:url value="/register"/>" method="post">
+    <form id="form1" method="post">
         <table>
             <tr>
                 <td>Login:</td>
