@@ -1,6 +1,7 @@
 package ru.mrchebik.web;
 
-import org.junit.Before;
+import org.junit.After;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -21,26 +22,24 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  * Created by mrchebik on 09.08.16.
  */
 public class NotesControllerTest {
-    private List<Note> expectedNotes;
-    private NoteRepository mockRepository;
-    private NotesController controllerDefault;
-    private NotesController controller;
-    private MockMvc mockMvcDefault;
-    private MockMvc mockMvc;
+    private static List<Note> expectedNotes;
+    private static NoteRepository mockRepository;
+    private static MockMvc mockMvc;
 
-    @Before
-    public void before() {
+    @BeforeClass
+    public static void before() {
         expectedNotes = new ArrayList<>();
         mockRepository = mock(NoteRepository.class);
-        controllerDefault = new NotesController();
-        controller = new NotesController(mockRepository);
-        mockMvcDefault = standaloneSetup(controllerDefault).build();
+        NotesController controller = new NotesController(mockRepository);
         mockMvc = standaloneSetup(controller).build();
     }
 
     @Test
     public void testNotesPage() throws Exception {
-        mockMvcDefault.perform(get("/notes")).andExpect(view().name("Notes"));
+        NotesController controller = new NotesController();
+        MockMvc mockMvc = standaloneSetup(controller).build();
+
+        mockMvc.perform(get("/notes")).andExpect(view().name("Notes"));
     }
 
     @Test
@@ -49,8 +48,6 @@ public class NotesControllerTest {
         when(mockRepository.add(new Note("test", "test"))).thenReturn(expectedNotes.get(0));
 
         mockMvc.perform(get("/notes/add")).andExpect(view().name("AddNote"));
-
-        expectedNotes.clear();
     }
 
     @Test
@@ -62,7 +59,7 @@ public class NotesControllerTest {
         when(mockRepository.findNotes(0)).thenReturn(expectedNotes);
 
         if (expectedNotes.size() > 10) {
-            if (1 * 10 > expectedNotes.size()) {
+            if (10 > expectedNotes.size()) {
                 expectedNotes = expectedNotes.subList(0, expectedNotes.size());
             } else {
                 expectedNotes = expectedNotes.subList(0, 10);
@@ -78,7 +75,10 @@ public class NotesControllerTest {
                 .andExpect(MockMvcResultMatchers.model().attribute("page", 1))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("pages"))
                 .andExpect(MockMvcResultMatchers.model().attribute("pages", 2));
+    }
 
+    @After
+    public void after() {
         expectedNotes.clear();
     }
 }

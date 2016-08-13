@@ -1,6 +1,6 @@
 package ru.mrchebik.web;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.mrchebik.data.UserRepository;
@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 public class RegisterControllerTest {
     private MockMvc mockMvc;
 
-    @Before
+    @BeforeClass
     public void before() {
         RegisterController controllerDefault = new RegisterController();
         mockMvc = standaloneSetup(controllerDefault).build();
