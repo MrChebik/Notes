@@ -55,7 +55,12 @@ public class NotesController {
 
     @RequestMapping(value = "/view", method = GET)
     public String view(@RequestParam(value = "hide", defaultValue = "1") int page,
+                       @RequestParam(value = "hideId", defaultValue = "0") long id,
                        Model model) {
+
+        if (id != 0) {
+            noteRepository.remove(id);
+        }
 
         List<Note> notes = new ArrayList<>(noteRepository.findNotes(UserSession.getId()));
         UserSession.setPages(notes, UserSession.getCount());

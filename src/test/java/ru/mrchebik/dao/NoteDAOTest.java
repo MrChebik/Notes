@@ -1,6 +1,6 @@
 package ru.mrchebik.dao;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import ru.mrchebik.entity.Note;
 
@@ -10,10 +10,10 @@ import static org.junit.Assert.assertEquals;
  * Created by mrchebik on 03.08.16.
  */
 public class NoteDAOTest {
-    private final NoteDAO noteDAO = new NoteDAO();
+    private static final NoteDAO noteDAO = new NoteDAO();
 
-    @Before
-    public void add() {
+    @BeforeClass
+    public static void add() {
         noteDAO.add(new Note(0, "test", "test"));
     }
 

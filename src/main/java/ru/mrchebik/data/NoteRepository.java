@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface NoteRepository {
     Object add(final Note note);
-
     List<Note> findNotes(final long id);
+    Object remove(final long id);
 }

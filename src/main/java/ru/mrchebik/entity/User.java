@@ -27,7 +27,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(String name) {
+    public void setUsername(final String name) {
         this.username = name;
     }
 
@@ -35,7 +35,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -45,7 +45,7 @@ public class User {
         return id;
     }
 
-    protected void setId(long id) {
+    protected void setId(final long id) {
         this.id = id;
     }
 

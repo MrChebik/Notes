@@ -9,6 +9,7 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Notes</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.show_sql">true</property>
 
         <mapping class="ru.mrchebik.entity.User"/>
         <mapping class="ru.mrchebik.entity.Note"/>

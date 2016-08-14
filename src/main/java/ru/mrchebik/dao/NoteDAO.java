@@ -29,20 +29,30 @@ public class NoteDAO extends DAO implements NoteRepository {
     }
 
     @Override
-    public List<Note> findNotes(final long id) {
+    public List<Note> findNotes(final long idUser) {
         return commandFactory.transaction(() -> {
-            Query query = getSession().createQuery("select N.title, N.text from ru.mrchebik.entity.Note N where id = :id").setLong("id", id);
+            System.out.println(1);
+            Query query = getSession().createQuery("select N.id, N.title, N.text from ru.mrchebik.entity.Note N where idUser = :idUser").setLong("idUser", idUser);
             List<Note> note = new ArrayList<Note>();
             Iterator itr = query.list().iterator();
             while (itr.hasNext()) {
                 Object[] objects = (Object[]) itr.next();
 
-                String title = String.valueOf(objects[0]);
-                String text = String.valueOf(objects[1]);
+                long id = Long.parseLong(String.valueOf(objects[0]));
+                String title = String.valueOf(objects[1]);
+                String text = String.valueOf(objects[2]);
 
-                note.add(new Note(title, text));
+                note.add(new Note(id, null, title, text));
             }
             return note;
+        });
+    }
+
+    @Override
+    public Object remove(final long id) {
+        return commandFactory.transaction(() -> {
+            getSession().createQuery("delete ru.mrchebik.entity.Note where id = :id").setLong("id", id).executeUpdate();
+            return null;
         });
     }
 }

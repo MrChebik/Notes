@@ -20,24 +20,27 @@
     </c:when>
     <c:otherwise>
         <h3>Your notes.</h3>
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Text</th>
-            </tr>
-            <c:forEach items="${notes}" var="note" >
-                <tr>
-                    <td>${note.title}</td>
-                    <td>${note.text}</td>
-                </tr>
-            </c:forEach>
-        </table>
 
-        <c:choose>
-            <c:when test="${pages > 1}">
-                <form id="form1" method="get">
+        <form id="form1" method="get">
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Text</th>
+                </tr>
+                <c:forEach items="${notes}" var="note" >
+                    <tr>
+                        <td>${note.title}</td>
+                        <td>${note.text}</td>
+                        <td><span class="fake-link" id="${note.id}" onclick="checkId(this.id)">Remove</span></td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <input id="0071" type="hidden" name="hideId">
+
+            <c:choose>
+                <c:when test="${pages > 1}">
                     <br>
-                    <input id="007" type="hidden" name="hide">
+                    <input id="007" type="hidden" name="hide" value="${page}">
                     <c:choose>
                         <c:when test="${page > 4}">
                             <span class="fake-link" id="${1}" onclick="checkPage(this.id)">${1}</span> ...
@@ -48,13 +51,12 @@
                     </c:forEach>
                     <c:choose>
                         <c:when test="${page + 4 <= pages}">
-                             ... <span class="fake-link" id="${pages}" onclick="checkPage(this.id)">${pages}</span>
+                            ... <span class="fake-link" id="${pages}" onclick="checkPage(this.id)">${pages}</span>
                         </c:when>
                     </c:choose>
-                    <br>
-                </form>
-            </c:when>
-        </c:choose>
+                </c:when>
+            </c:choose>
+        </form>
     </c:otherwise>
 </c:choose>
 <a href="<c:url value="/notes"/>">Back</a>
