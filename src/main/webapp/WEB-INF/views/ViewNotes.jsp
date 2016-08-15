@@ -16,10 +16,10 @@
 <body>
 <c:choose>
     <c:when test="${notes.size() == 0}" >
-        <h3>You do not have any notes.</h3>
+        <h2>You do not have any notes</h2>
     </c:when>
     <c:otherwise>
-        <h3>Your notes.</h3>
+        <h2>Your notes</h2>
 
         <form id="form1" method="get">
             <table>
@@ -59,6 +59,6 @@
         </form>
     </c:otherwise>
 </c:choose>
-<a href="<c:url value="/notes"/>">Back</a>
+<a href="<c:url value="/notes/${username}"/>">Back</a>
 </body>
 </html>

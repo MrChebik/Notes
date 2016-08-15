@@ -14,19 +14,20 @@ import java.util.List;
 @Scope("session")
 public class UserSession {
     private static long id;
+    private static String username;
     private static int count = 10;
     private static int pages;
 
-    public static void setId(final long currentId) {
-        id = currentId;
+    public static void setId(final long id) {
+        UserSession.id = id;
     }
 
     public static long getId() {
         return id;
     }
 
-    public static void setCount(final int count1) {
-        count = count1;
+    public static void setCount(final int count) {
+        UserSession.count = count;
     }
 
     public static int getCount() {
@@ -39,5 +40,13 @@ public class UserSession {
 
     public static int getPages() {
         return pages;
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        UserSession.username = username;
     }
 }

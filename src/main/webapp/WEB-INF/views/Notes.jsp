@@ -12,7 +12,8 @@
     <title>Notes</title>
 </head>
 <body>
-<a href="<c:url value="/notes/add"/>">Add note</a> |
-<a href="<c:url value="/notes/view"/>">View notes</a>
+<h1>Hi, ${username}</h1>
+<a href="<c:url value="/notes/${username}/add"/>">Add note</a> |
+<a href="<c:url value="/notes/${username}/view"/>">View notes</a>
 </body>
 </html>

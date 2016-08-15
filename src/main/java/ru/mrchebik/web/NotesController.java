@@ -3,6 +3,7 @@ package ru.mrchebik.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.mrchebik.data.NoteRepository;
@@ -32,19 +33,26 @@ public class NotesController {
         this.noteRepository = noteRepository;
     }
 
-    @RequestMapping(method = GET)
-    public String notes() {
+    @RequestMapping(value = "/{username}", method = GET)
+    public String notes(@PathVariable String username,
+                        Model model) {
+        model.addAttribute("username", username);
         return "Notes";
     }
 
-    @RequestMapping(value = "/add", method = GET)
-    public String Get() {
+    @RequestMapping(value = "/{username}/add", method = GET)
+    public String Get(@PathVariable String username,
+                      Model model) {
+        model.addAttribute("username", username);
         return "AddNote";
     }
 
-    @RequestMapping(value = "/add", method = POST)
-    public String add(@RequestParam String title,
-                      @RequestParam String text) {
+    @RequestMapping(value = "/{username}/add", method = POST)
+    public String add(@PathVariable String username,
+                      @RequestParam String title,
+                      @RequestParam String text,
+                      Model model) {
+        model.addAttribute("username", username);
         try {
             noteRepository.add(new Note(UserSession.getId(), title, text));
         } catch (Exception e) {
@@ -53,8 +61,9 @@ public class NotesController {
         return "AddNote";
     }
 
-    @RequestMapping(value = "/view", method = GET)
-    public String view(@RequestParam(value = "hide", defaultValue = "1") int page,
+    @RequestMapping(value = "/{username}/view", method = GET)
+    public String view(@PathVariable String username,
+                       @RequestParam(value = "hide", defaultValue = "1") int page,
                        @RequestParam(value = "hideId", defaultValue = "0") long id,
                        Model model) {
 
@@ -73,6 +82,7 @@ public class NotesController {
             }
         }
 
+        model.addAttribute("username", username);
         model.addAttribute("notes", notes);
         model.addAttribute("page", page);
         model.addAttribute("pages", UserSession.getPages());

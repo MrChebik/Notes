@@ -12,7 +12,7 @@
         <title>Add note</title>
     </head>
     <body>
-        <h3>Add note.</h3>
+        <h2>Add note</h2>
         <table>
             <form method="post">
                 <tr>
@@ -30,6 +30,6 @@
                 </tr>
             </form>
         </table>
-        <a href="<c:url value="/notes"/>">Back</a>
+        <a href="<c:url value="/notes/${username}"/>">Back</a>
     </body>
 </html>
