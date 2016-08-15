@@ -31,7 +31,6 @@ public class NoteDAO extends DAO implements NoteRepository {
     @Override
     public List<Note> findNotes(final long idUser) {
         return commandFactory.transaction(() -> {
-            System.out.println(1);
             Query query = getSession().createQuery("select N.id, N.title, N.text from ru.mrchebik.entity.Note N where idUser = :idUser").setLong("idUser", idUser);
             List<Note> note = new ArrayList<Note>();
             Iterator itr = query.list().iterator();
