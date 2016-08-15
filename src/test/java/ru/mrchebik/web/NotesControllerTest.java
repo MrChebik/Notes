@@ -40,7 +40,7 @@ public class NotesControllerTest {
         NotesController controller = new NotesController();
         MockMvc mockMvc = standaloneSetup(controller).build();
 
-        mockMvc.perform(get("/notes")).andExpect(view().name("Notes"));
+        mockMvc.perform(get("/notes/test")).andExpect(view().name("Notes"));
     }
 
     @Test
@@ -48,9 +48,9 @@ public class NotesControllerTest {
         expectedNotes.add(new Note("test", "test"));
         when(mockRepository.add(new Note("test", "test"))).thenReturn(expectedNotes.get(0));
 
-        mockMvc.perform(get("/notes/add")).andExpect(view().name("AddNote"));
+        mockMvc.perform(get("/notes/test/add")).andExpect(view().name("AddNote"));
 
-        mockMvc.perform(post("/notes/add")
+        mockMvc.perform(post("/notes/test/add")
                 .param("title", "title")
                 .param("test", "text"))
                 .andExpect(redirectedUrl(null));
@@ -75,7 +75,7 @@ public class NotesControllerTest {
         }
         assertEquals(expectedNotes.size(), 10);
 
-        mockMvc.perform(get("/notes/view"))
+        mockMvc.perform(get("/notes/test/view"))
                 .andExpect(MockMvcResultMatchers.view().name("ViewNotes"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("notes"))
                 .andExpect(MockMvcResultMatchers.model().attribute("notes", expectedNotes))

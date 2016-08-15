@@ -38,4 +38,10 @@ public class UserSessionTest {
         UserSession.setPages(noteList, 5);
         assertEquals(UserSession.getPages(), 1);
     }
+
+    @Test
+    public void setGetUsername() throws Exception {
+        UserSession.setUsername("test");
+        assertEquals(UserSession.getUsername(), "test");
+    }
 }

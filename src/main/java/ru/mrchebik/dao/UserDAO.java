@@ -19,15 +19,14 @@ public class UserDAO extends DAO implements UserRepository {
     private final CommandFactory commandFactory = new CommandFactory();
 
     @Override
-    public User add(final User user) {
+    public Object add(final User user) {
         return commandFactory.transaction(() -> {
             try {
                 getSession().save(user);
             } catch (Exception e) {
                 getSession().getTransaction().rollback();
-                return null;
             }
-            return user;
+            return null;
         });
     }
 

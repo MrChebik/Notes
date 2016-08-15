@@ -1,6 +1,6 @@
 package ru.mrchebik.dao;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import ru.mrchebik.entity.User;
 
@@ -10,10 +10,10 @@ import static org.junit.Assert.assertEquals;
  * Created by mrchebik on 04.08.16.
  */
 public class UserDAOTest {
-    private final UserDAO userDAO = new UserDAO();
+    private static final UserDAO userDAO = new UserDAO();
 
-    @Before
-    public void add() {
+    @BeforeClass
+    public static void add() {
         userDAO.add(new User("test", "test"));
     }
 
