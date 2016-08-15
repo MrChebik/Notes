@@ -31,7 +31,7 @@
                     <tr>
                         <td>${note.title}</td>
                         <td>${note.text}</td>
-                        <td><span class="fake-link" id="${note.id}" onclick="checkId(this.id)">Remove</span></td>
+                        <td><span class="fake-link" id="${note.id}" onclick="submitData(this.id, '0071')">Remove</span></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -51,7 +51,7 @@
                     </c:forEach>
                     <c:choose>
                         <c:when test="${page + 4 <= pages}">
-                            ... <span class="fake-link" id="${pages}" onclick="checkPage(this.id)">${pages}</span>
+                            ... <span class="fake-link" id="${pages}" onclick="submitData(this.id, '007')">${pages}</span>
                         </c:when>
                     </c:choose>
                 </c:when>
