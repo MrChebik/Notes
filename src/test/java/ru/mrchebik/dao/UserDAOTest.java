@@ -4,6 +4,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import ru.mrchebik.entity.User;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -14,7 +16,13 @@ public class UserDAOTest {
 
     @BeforeClass
     public static void add() {
-        userDAO.add(new User("test", "test"));
+        try {
+            if (!userDAO.findUser("test").getUsername().equals("test") && !userDAO.findUser("test").getPassword().equals("test")) {
+                userDAO.add(new User("test", "test"));
+            }
+        } catch (NoSuchElementException e) {
+            userDAO.add(new User("test", "test"));
+        }
     }
 
     @Test
