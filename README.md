@@ -11,7 +11,7 @@ The technologies, that are used:
 - Spring MVC
 
 ## Running
-1. `mvn tomcat7:run`
+1. `mvn tomcat7:run` or `mvn tomcat7:run -DskipTests` if you have failed tests.
 2. Follow to the link: [_http://localhost:8080/_](http://localhost:8080")
 
 ## Info about running

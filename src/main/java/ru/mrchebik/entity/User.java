@@ -32,7 +32,6 @@ public class User {
         this.password = password;
     }
 
-    @Column(unique = true)
     public String getUsername() {
         return username;
     }
