@@ -78,11 +78,11 @@ public class NotesControllerTest {
         mockMvc.perform(get("/notes/test/view"))
                 .andExpect(MockMvcResultMatchers.view().name("ViewNotes"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("notes"))
-                //.andExpect(MockMvcResultMatchers.model().attribute("notes", expectedNotes))
+                .andExpect(MockMvcResultMatchers.model().attribute("notes", expectedNotes))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("page"))
                 .andExpect(MockMvcResultMatchers.model().attribute("page", 1))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("pages"))
-                //.andExpect(MockMvcResultMatchers.model().attribute("pages", 2));
+                .andExpect(MockMvcResultMatchers.model().attribute("pages", 2));
         ;
     }
 

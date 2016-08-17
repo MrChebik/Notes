@@ -1,5 +1,7 @@
 package ru.mrchebik.entity;
 
+import org.hibernate.validator.NotNull;
+
 import javax.persistence.*;
 
 /**
@@ -9,11 +11,18 @@ import javax.persistence.*;
 @Table(name = "Notes")
 public class Note {
 
-    @Id
-    @JoinColumn(name = "idUser")
+    @Id @GeneratedValue
+    @Column(unique = true)
     private long id;
+
     private long idUser;
+
+    @NotNull
+    @Column(nullable = false, length = 25)
     private String title;
+
+    @NotNull
+    @Column(nullable = false)
     private String text;
 
     public Note() {

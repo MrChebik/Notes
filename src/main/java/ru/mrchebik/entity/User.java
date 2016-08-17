@@ -1,5 +1,7 @@
 package ru.mrchebik.entity;
 
+import org.hibernate.validator.NotNull;
+
 import javax.persistence.*;
 
 /**
@@ -9,8 +11,16 @@ import javax.persistence.*;
 @Table(name = "Users")
 public class User {
 
+    @Id @GeneratedValue
+    @Column(unique = true)
     private long id;
+
+    @NotNull
+    @Column(unique = true, nullable = false, length = 12)
     private String username;
+
+    @NotNull
+    @Column(nullable = false, length = 16)
     private String password;
 
     public User() {
@@ -39,8 +49,6 @@ public class User {
         this.password = password;
     }
 
-    @Id
-    @GeneratedValue
     public long getId() {
         return id;
     }
