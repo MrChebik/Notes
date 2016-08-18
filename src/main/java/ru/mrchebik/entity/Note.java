@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "Notes")
 public class Note {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
     private long id;
 
