@@ -3,6 +3,7 @@ package ru.mrchebik.dao;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import ru.mrchebik.entity.Note;
+import ru.mrchebik.entity.User;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,7 +15,7 @@ public class NoteDAOTest {
 
     @BeforeClass
     public static void add() {
-        noteDAO.add(new Note(0, "test", "test"));
+        noteDAO.add(new Note(new User("test", "test"), "test", "test"));
     }
 
     @Test

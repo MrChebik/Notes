@@ -3,6 +3,8 @@ package ru.mrchebik.entity;
 import org.hibernate.validator.NotNull;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by mrchebik on 22.07.16.
@@ -13,7 +15,7 @@ public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
-    private long id;
+    private long USER_ID;
 
     @NotNull
     @Column(unique = true, nullable = false, length = 12)
@@ -22,6 +24,9 @@ public class User {
     @NotNull
     @Column(nullable = false, length = 16)
     private String password;
+
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Note> notes = new HashSet<Note>(0);
 
     public User() {
 
@@ -48,12 +53,19 @@ public class User {
         this.password = password;
     }
 
-    public long getId() {
-        return id;
+    public long getUSER_ID() {
+        return USER_ID;
     }
 
-    protected void setId(final long id) {
-        this.id = id;
+    protected void setUSER_ID(final long id) {
+        this.USER_ID = id;
     }
 
+    public Set<Note> getNotes() {
+        return this.notes;
+    }
+
+    public void setNotes(Set<Note> notes) {
+        this.notes = notes;
+    }
 }

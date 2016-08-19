@@ -54,7 +54,7 @@ public class NotesController {
                       Model model) {
         model.addAttribute("username", username);
         try {
-            noteRepository.add(new Note(UserSession.getId(), title, text));
+            noteRepository.add(new Note(UserSession.getUser(), title, text));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public class NotesController {
             noteRepository.remove(id);
         }
 
-        List<Note> notes = new ArrayList<>(noteRepository.findNotes(UserSession.getId()));
+        List<Note> notes = new ArrayList<>(noteRepository.findNotes(UserSession.getUser().getUSER_ID()));
         UserSession.setPages(notes, UserSession.getCount());
 
         if (notes.size() > UserSession.getCount()) {

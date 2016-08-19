@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
  * Created by mrchebik on 04.08.16.
  */
 public class NoteTest {
-    private final Note note = new Note(0, "test", "test");
+    private final Note note = new Note("test", "test");
 
     @Test
     public void getTitle() throws Exception {
@@ -44,17 +44,5 @@ public class NoteTest {
         note.setId(1);
         assertTrue(note.getId() == 1);
         note.setId(0);
-    }
-
-    @Test
-    public void getIdUser() throws Exception {
-        assertTrue(note.getIdUser() == 0);
-    }
-
-    @Test
-    public void setIdUser() throws Exception {
-        note.setIdUser(1);
-        assertTrue(note.getIdUser() == 1);
-        note.setIdUser(0);
     }
 }

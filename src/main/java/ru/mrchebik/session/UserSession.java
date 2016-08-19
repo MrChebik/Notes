@@ -3,6 +3,7 @@ package ru.mrchebik.session;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import ru.mrchebik.entity.Note;
+import ru.mrchebik.entity.User;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,9 +15,9 @@ import java.util.List;
 @Scope("session")
 public class UserSession {
     private static long id;
-    private static String username;
     private static int count = 10;
     private static int pages;
+    private static User user;
 
     public static void setId(final long id) {
         UserSession.id = id;
@@ -42,11 +43,11 @@ public class UserSession {
         return pages;
     }
 
-    public static String getUsername() {
-        return username;
+    public static User getUser() {
+        return user;
     }
 
-    public static void setUsername(String username) {
-        UserSession.username = username;
+    public static void setUser(User user) {
+        UserSession.user = user;
     }
 }

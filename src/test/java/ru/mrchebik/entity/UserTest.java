@@ -36,14 +36,14 @@ public class UserTest {
 
     @Test
     public void getId() throws Exception {
-        assertTrue(user.getId() == 0);
+        assertTrue(user.getUSER_ID() == 0);
     }
 
     @Test
     public void setId() throws Exception {
-        user.setId(1);
-        assertTrue(user.getId() == 1);
-        user.setId(0);
+        user.setUSER_ID(1);
+        assertTrue(user.getUSER_ID() == 1);
+        user.setUSER_ID(0);
     }
 
 }

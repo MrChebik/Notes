@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.mrchebik.command.CommandFactory;
 import ru.mrchebik.data.NoteRepository;
 import ru.mrchebik.entity.Note;
+import ru.mrchebik.entity.User;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,9 +30,9 @@ public class NoteDAO extends DAO implements NoteRepository {
     }
 
     @Override
-    public List<Note> findNotes(final long idUser) {
+    public List<Note> findNotes(final long userId) {
         return commandFactory.transaction(() -> {
-            Query query = getSession().createQuery("select N.id, N.title, N.text from ru.mrchebik.entity.Note N where idUser = :idUser").setLong("idUser", idUser);
+            Query query = getSession().createQuery("select N.id, N.title, N.text from ru.mrchebik.entity.Note N where USER_ID = :USER_ID").setLong("USER_ID", userId);
             List<Note> note = new ArrayList<Note>();
             Iterator itr = query.list().iterator();
             while (itr.hasNext()) {

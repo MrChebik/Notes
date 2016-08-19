@@ -15,7 +15,9 @@ public class Note {
     @Column(unique = true)
     private long id;
 
-    private long idUser;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private User user;
 
     @NotNull
     @Column(nullable = false, length = 25)
@@ -35,8 +37,8 @@ public class Note {
         this.text = text;
     }
 
-    public Note(final long idUser, final String title, final String text) {
-        this.idUser = idUser;
+    public Note(final User user, final String title, final String text) {
+        this.user = user;
         this.title = title;
         this.text = text;
     }
@@ -46,12 +48,12 @@ public class Note {
         this.text = text;
     }
 
-    public long getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(final long idUser) {
-        this.idUser = idUser;
+    public void setUser(final User user) {
+        this.user = user;
     }
 
     public String getTitle() {

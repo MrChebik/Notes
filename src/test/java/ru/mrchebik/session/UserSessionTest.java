@@ -3,6 +3,7 @@ package ru.mrchebik.session;
 import org.junit.Before;
 import org.junit.Test;
 import ru.mrchebik.entity.Note;
+import ru.mrchebik.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,8 @@ public class UserSessionTest {
     }
 
     @Test
-    public void setGetUsername() throws Exception {
-        UserSession.setUsername("test");
-        assertEquals(UserSession.getUsername(), "test");
+    public void setGetUser() throws Exception {
+        UserSession.setUser(new User("test", "test"));
+        assertEquals(UserSession.getUser(), new User("test", "test"));
     }
 }

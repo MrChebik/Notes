@@ -55,9 +55,9 @@ public class RegisterController {
         } catch (NoSuchElementException e) {
             return "redirect:/register/notExists";
         }
-        UserSession.setUsername(user.getUsername());
-        UserSession.setId(user.getId());
-        return "redirect:/notes/" + UserSession.getUsername();
+        UserSession.setUser(user);
+        UserSession.setId(user.getUSER_ID());
+        return "redirect:/notes/" + UserSession.getUser().getUsername();
     }
 
     @RequestMapping(value = "/duplicate", method = GET)
