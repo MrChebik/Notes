@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input id="password" type="text" name="password" oninput="check('password')"></td>
+                <td><input id="password" type="password" name="password" oninput="check('password')"></td>
             </tr>
         </table>
         <div class="inputs">
