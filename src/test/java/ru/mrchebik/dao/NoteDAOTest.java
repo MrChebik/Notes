@@ -5,6 +5,8 @@ import org.junit.Test;
 import ru.mrchebik.entity.Note;
 import ru.mrchebik.entity.User;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -12,15 +14,25 @@ import static org.junit.Assert.assertEquals;
  */
 public class NoteDAOTest {
     private static final NoteDAO noteDAO = new NoteDAO();
+    private static final User user = new User("test", "test");
+    private static long id;
 
     @BeforeClass
     public static void add() {
-        noteDAO.add(new Note(new User("test", "test"), "test", "test"));
+        UserDAO userDAO = new UserDAO();
+        User userDemo = userDAO.findUser(user.getUsername());
+        try {
+            if (userDemo.getUsername().equals("test"));
+        } catch (NoSuchElementException e) {
+            userDAO.add(user);
+        }
+        id = userDAO.findUser(user.getUsername()).getUSER_ID();
+        noteDAO.add(new Note(userDemo, "testTitle", "testText"));
     }
 
     @Test
     public void addAndGet() throws Exception {
-        assertEquals(noteDAO.findNotes(0).get(0).getTitle(), "test");
-        assertEquals(noteDAO.findNotes(0).get(0).getText(), "test");
+        assertEquals(noteDAO.findNotes(id).get(0).getTitle(), "testTitle");
+        assertEquals(noteDAO.findNotes(id).get(0).getText(), "testText");
     }
 }

@@ -42,7 +42,8 @@ public class UserSessionTest {
 
     @Test
     public void setGetUser() throws Exception {
-        UserSession.setUser(new User("test", "test"));
-        assertEquals(UserSession.getUser(), new User("test", "test"));
+        User user = new User("test", "test");
+        UserSession.setUser(user);
+        assertEquals(UserSession.getUser(), user);
     }
 }

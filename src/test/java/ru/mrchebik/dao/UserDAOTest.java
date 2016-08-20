@@ -17,9 +17,7 @@ public class UserDAOTest {
     @BeforeClass
     public static void add() {
         try {
-            if (!userDAO.findUser("test").getUsername().equals("test") && !userDAO.findUser("test").getPassword().equals("test")) {
-                userDAO.add(new User("test", "test"));
-            }
+            if (userDAO.findUser("test").getUsername().equals("test"));
         } catch (NoSuchElementException e) {
             userDAO.add(new User("test", "test"));
         }

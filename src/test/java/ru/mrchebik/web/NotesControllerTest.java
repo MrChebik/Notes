@@ -5,14 +5,18 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import ru.mrchebik.dao.UserDAO;
 import ru.mrchebik.data.NoteRepository;
 import ru.mrchebik.entity.Note;
+import ru.mrchebik.entity.User;
+import ru.mrchebik.session.UserSession;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
@@ -60,11 +64,15 @@ public class NotesControllerTest {
 
     @Test
     public void testViewPage() throws Exception {
+        User user = new User("test", "test");
+        UserDAO userDAO = new UserDAO();
+        User demo = userDAO.findUser(user.getUsername());
+
         for (int i = 0; i < 20; i++) {
             expectedNotes.add(0, new Note("test", "test"));
         }
 
-        when(mockRepository.findNotes(0)).thenReturn(expectedNotes);
+        when(mockRepository.findNotes(userDAO.findUser(user.getUsername()).getUSER_ID())).thenReturn(expectedNotes);
 
         if (expectedNotes.size() > 10) {
             if (10 > expectedNotes.size()) {
@@ -75,6 +83,8 @@ public class NotesControllerTest {
         }
         assertEquals(expectedNotes.size(), 10);
 
+        UserSession.setUser(demo);
+
         mockMvc.perform(get("/notes/test/view"))
                 .andExpect(MockMvcResultMatchers.view().name("ViewNotes"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("notes"))
@@ -83,7 +93,6 @@ public class NotesControllerTest {
                 .andExpect(MockMvcResultMatchers.model().attribute("page", 1))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("pages"))
                 .andExpect(MockMvcResultMatchers.model().attribute("pages", 2));
-        ;
     }
 
     @After
