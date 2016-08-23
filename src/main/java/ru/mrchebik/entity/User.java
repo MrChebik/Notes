@@ -1,6 +1,7 @@
 package ru.mrchebik.entity;
 
 import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Size;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -18,10 +19,12 @@ public class User {
     private long USER_ID;
 
     @NotNull
+    @Size(min = 4, max = 12)
     @Column(unique = true, nullable = false, length = 12)
     private String username;
 
     @NotNull
+    @Size(min = 4, max = 12)
     @Column(nullable = false, length = 16)
     private String password;
 
