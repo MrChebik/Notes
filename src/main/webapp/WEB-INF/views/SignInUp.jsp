@@ -26,11 +26,9 @@
                 <td><input id="password" type="password" name="password" oninput="check('password')"></td>
             </tr>
         </table>
-        <div class="inputs">
-            <input id="007" type="hidden" name="hide">
-            <input id="up" type="button" value="Sign up" onclick="checkError('up')">
-            <input id="in" type="button" value="Sign in" onclick="checkError('in')">
-        </div>
+        <input id="007" type="hidden" name="hide">
+        <input id="up" type="button" value="Sign up" onclick="checkError('up')">
+        <input id="in" type="button" value="Sign in" onclick="checkError('in')">
     </form>
 </div>
 </body>
