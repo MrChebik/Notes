@@ -1,30 +1,12 @@
-package ru.mrchebik.entity;
-
-import org.hibernate.validator.NotNull;
-
-import javax.persistence.*;
+package ru.mrchebik.model;
 
 /**
  * Created by mrchebik on 23.07.16.
  */
-@Entity
-@Table(name = "Notes")
 public class Note {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
     private long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
-
-    @NotNull
-    @Column(nullable = false, length = 25)
     private String title;
-
-    @NotNull
-    @Column(nullable = false)
     private String text;
 
     public Note() {

@@ -2,8 +2,8 @@ package ru.mrchebik.session;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import ru.mrchebik.entity.Note;
-import ru.mrchebik.entity.User;
+import ru.mrchebik.model.Note;
+import ru.mrchebik.model.User;
 
 import java.math.BigDecimal;
 import java.util.List;

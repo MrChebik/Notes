@@ -1,6 +1,6 @@
 package ru.mrchebik.data;
 
-import ru.mrchebik.entity.Note;
+import ru.mrchebik.model.Note;
 
 import java.util.List;
 

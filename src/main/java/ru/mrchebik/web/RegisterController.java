@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.mrchebik.data.UserRepository;
-import ru.mrchebik.entity.User;
+import ru.mrchebik.model.User;
 import ru.mrchebik.session.UserSession;
 
 import java.util.NoSuchElementException;

@@ -12,7 +12,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="ru.mrchebik.entity.User"/>
-        <mapping class="ru.mrchebik.entity.Note"/>
+        <mapping resource="User.hbm.xml" />
+        <mapping resource="Note.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

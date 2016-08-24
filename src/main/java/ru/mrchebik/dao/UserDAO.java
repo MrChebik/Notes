@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.mrchebik.command.CommandFactory;
 import ru.mrchebik.data.UserRepository;
-import ru.mrchebik.entity.User;
+import ru.mrchebik.model.User;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class UserDAO extends DAO implements UserRepository {
     @Override
     public User findUser(final String username) {
         return commandFactory.transaction(() -> {
-            Query query = getSession().createQuery("from ru.mrchebik.entity.User where username = :username").setString("username", username);
+            Query query = getSession().createQuery("from ru.mrchebik.model.User where username = :username").setString("username", username);
             List<User> user = query.list();
             return user.iterator().next();
         });

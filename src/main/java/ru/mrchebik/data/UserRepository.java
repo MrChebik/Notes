@@ -1,6 +1,6 @@
 package ru.mrchebik.data;
 
-import ru.mrchebik.entity.User;
+import ru.mrchebik.model.User;
 
 /**
  * Created by mrchebik on 08.08.16.

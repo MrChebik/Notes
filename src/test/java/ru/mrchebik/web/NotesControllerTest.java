@@ -7,8 +7,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import ru.mrchebik.dao.UserDAO;
 import ru.mrchebik.data.NoteRepository;
-import ru.mrchebik.entity.Note;
-import ru.mrchebik.entity.User;
+import ru.mrchebik.model.Note;
+import ru.mrchebik.model.User;
 import ru.mrchebik.session.UserSession;
 
 import java.util.ArrayList;

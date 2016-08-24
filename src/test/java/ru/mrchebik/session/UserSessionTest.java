@@ -2,8 +2,8 @@ package ru.mrchebik.session;
 
 import org.junit.Before;
 import org.junit.Test;
-import ru.mrchebik.entity.Note;
-import ru.mrchebik.entity.User;
+import ru.mrchebik.model.Note;
+import ru.mrchebik.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

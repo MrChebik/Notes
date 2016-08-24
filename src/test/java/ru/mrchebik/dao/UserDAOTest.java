@@ -2,7 +2,7 @@ package ru.mrchebik.dao;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import ru.mrchebik.entity.User;
+import ru.mrchebik.model.User;
 
 import java.util.NoSuchElementException;
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.mrchebik.data.NoteRepository;
-import ru.mrchebik.entity.Note;
+import ru.mrchebik.model.Note;
 import ru.mrchebik.session.UserSession;
 
 import java.util.ArrayList;

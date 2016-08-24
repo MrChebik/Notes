@@ -4,7 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.mrchebik.data.UserRepository;
-import ru.mrchebik.entity.User;
+import ru.mrchebik.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

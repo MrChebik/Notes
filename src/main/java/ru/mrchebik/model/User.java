@@ -1,34 +1,15 @@
-package ru.mrchebik.entity;
+package ru.mrchebik.model;
 
-import org.hibernate.validator.NotNull;
-import org.hibernate.validator.Size;
-
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by mrchebik on 22.07.16.
  */
-@Entity
-@Table(name = "Users")
 public class User {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
     private long USER_ID;
-
-    @NotNull
-    @Size(min = 4, max = 12)
-    @Column(unique = true, nullable = false, length = 12)
     private String username;
-
-    @NotNull
-    @Size(min = 4, max = 12)
-    @Column(nullable = false, length = 16)
     private String password;
-
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Note> notes = new HashSet<Note>(0);
 
     public User() {
@@ -60,7 +41,7 @@ public class User {
         return USER_ID;
     }
 
-    protected void setUSER_ID(final long id) {
+    public void setUSER_ID(final long id) {
         this.USER_ID = id;
     }
 
