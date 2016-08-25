@@ -11,17 +11,19 @@ The technologies, that are used:
 - Spring MVC
 
 ## Running
-1. `mvn tomcat7:run` or `mvn tomcat7:run -DskipTests` if you have failed tests.
-2. Follow to the link: [_http://localhost:8080/_](http://localhost:8080")
+1. Configure war for deploy with necessaries libraries (i.e. _.idea/artifacts/Notes_Web_exploded.xml_)
+2. If you can configure Tomcat:
+ - Setting _tomcat-users.xml_:
+ ```
+ <role rolename="manager-script"/>
+ <user username="admin" password="password" roles="manager-script" />
+ ```
+ - `mvn tomcat7:deploy`
 
-## Info about running
-* Of course, if you want to run, you must create _'artifact'_ or setting exists for run `mvn tomcat7:run`. I save settings of my artifacts in _.idea/artifacts/**_. You can find that, whats libraries was used.
-* Files, from the _target/tomcat/conf/**_ are temp files, which can help you to run Tomcat7.
-* I not recommend execute `mvn clean` or `mvn tomcat7:deploy`, because I can't to settings Tomcat for the server (I'm try /etc/tomcat, /usr/share/tomcat, and path, where was tomcat for IntelliJ IDEA). So, if you make `mvn clean`, you can execute `mvn tomcat7:run-war` then setting again _tomat-users.xml_ or make revert from git.
->Example _tomcat-users.xml_:
->```
-><tomcat-users>
->   <role rolename="manager-script"/>
->   <user username="admin" password="password" roles="manager-script" />
-></tomcat-users>
->```
+else
+ - `mvn tomcat7:run`
+ - Follow to the link: [_http://localhost:8080/_](http://localhost:8080")
+
+## Goals for the future
+- [ ] encoding UTF-8
+- [ ] support Spring Security
