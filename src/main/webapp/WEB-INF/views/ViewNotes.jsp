@@ -43,11 +43,11 @@
                     <input id="007" type="hidden" name="hide" value="${page}">
                     <c:choose>
                         <c:when test="${page > 4}">
-                            <span class="fake-link" id="${1}" onclick="checkPage(this.id)">${1}</span> ...
+                            <span class="fake-link" id="${1}" onclick="submitData(this.id, '007')">${1}</span> ...
                         </c:when>
                     </c:choose>
                     <c:forEach begin="${page > 4 ? page - 2 : 1}" end="${page + 4 > pages ? pages : page + 2}" var="page">
-                        <span class="fake-link" id="${page}" onclick="checkPage(this.id)">${page}</span>
+                        <span class="fake-link" id="${page}" onclick="submitData(this.id, '007')">${page}</span>
                     </c:forEach>
                     <c:choose>
                         <c:when test="${page + 4 <= pages}">
