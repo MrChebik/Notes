@@ -10,25 +10,25 @@
 <html>
     <head>
         <title>Add note</title>
+        <script type="text/javascript" src="<c:url value="/resources/js/AddNote.js"/>"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     </head>
     <body>
         <h2>Add note</h2>
         <table>
-            <form method="post">
-                <tr>
-                    <td>Title:</td>
-                    <td><input type="text" name="title"></td>
-                </tr>
-                <tr>
-                    <td>Text:</td>
-                    <td><input type="text" name="text"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" value="Add">
-                    </td>
-                </tr>
-            </form>
+            <tr>
+                <td>Title:</td>
+                <td><input id="titleId" type="text" name="title"></td>
+            </tr>
+            <tr>
+                <td>Text:</td>
+                <td><input id="textId" type="text" name="text"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="sendNote()" value="Add">
+                </td>
+            </tr>
         </table>
         <a href="<c:url value="/notes/${username}"/>">Back</a>
     </body>

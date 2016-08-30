@@ -1,9 +1,11 @@
 package ru.mrchebik.web;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.mrchebik.data.NoteRepository;
@@ -48,17 +50,9 @@ public class NotesController {
     }
 
     @RequestMapping(value = "/{username}/add", method = POST)
-    public String add(@PathVariable String username,
-                      @RequestParam String title,
-                      @RequestParam String text,
-                      Model model) {
-        model.addAttribute("username", username);
-        try {
-            noteRepository.add(new Note(UserSession.getUser(), title, text));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "AddNote";
+    public void add(@RequestBody String note) {
+        JSONObject jsonObject = new JSONObject(note);
+        noteRepository.add(new Note(UserSession.getUser(), jsonObject.getString("title"), jsonObject.getString("text")));
     }
 
     @RequestMapping(value = "/{username}/view", method = GET)

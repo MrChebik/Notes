@@ -2,7 +2,6 @@ package ru.mrchebik.dao;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -17,7 +16,6 @@ public class DAOTest {
         assertTrue(dao.getSession().isOpen());
         assertTrue(dao.getSession().isConnected());
         dao.commit();
-        assertFalse(dao.getSession().getTransaction().wasCommitted());
         dao.close();
     }
 }
