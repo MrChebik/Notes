@@ -4,13 +4,12 @@
 
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Notes</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/NotesWeb?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hbm2ddl.auto">update</property>
 
         <mapping resource="User.hbm.xml" />
         <mapping resource="Note.hbm.xml" />
