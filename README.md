@@ -8,6 +8,7 @@ The technologies, that are used:
 - JUnit, Mockito
 - Hibernate, MySQL
 - Spring MVC
+- JSON
 - Shell
 
 ## Running
