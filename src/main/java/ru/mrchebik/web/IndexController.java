@@ -11,10 +11,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Controller
 @RequestMapping("/")
 public class IndexController {
-
     @RequestMapping(method = GET)
     public String registerStage() {
         return "index";
     }
-
 }

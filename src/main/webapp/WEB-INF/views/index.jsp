@@ -10,9 +10,17 @@
 <html>
 <head>
     <title>Notes</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/index.css"/>">
 </head>
 <body>
-<h1>Welcome to the Notes</h1>
-<a href="<c:url value="/register"/>">Register/Login</a>
+<h1>Notes</h1>
+<div class="separator">
+    <a class="link" href="<c:url value="/register"/>">Register/Login</a>
+</div>
+<h3>Welcome to the Notes!</h3>
+
+Notes can help you to create notes.<br>
+<a href="<c:url value="/register"/>">Register/Login</a> for to start work with this application.
+<div class="separator bottom" ></div>
 </body>
 </html>
