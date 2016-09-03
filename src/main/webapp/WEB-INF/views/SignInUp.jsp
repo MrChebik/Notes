@@ -11,9 +11,14 @@
 <head>
     <title>Sign up</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/SignInUp.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/layout.css"/>">
     <script type="text/javascript" src="<c:url value="/resources/js/SignInUp.js"/>"></script>
 </head>
 <body>
+<h1>Notes</h1>
+<div class="separator top">
+    <a class="link" href="<c:url value="/register"/>">Register/Login</a>
+</div>
 <div>
     <form id="form1" method="post">
         <table>
@@ -30,6 +35,9 @@
         <input id="up" type="button" value="Sign up" onclick="checkError('up')">
         <input id="in" type="button" value="Sign in" onclick="checkError('in')">
     </form>
+</div>
+<div class="separator bottom" >
+    <a class="link" href="<c:url value="/"/>">Back</a>
 </div>
 </body>
 </html>

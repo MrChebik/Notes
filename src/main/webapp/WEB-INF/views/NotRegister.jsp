@@ -10,9 +10,16 @@
 <html>
 <head>
     <title>Notes - Sign up</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/layout.css"/>">
 </head>
 <body>
+<h1>Notes</h1>
+<div class="separator top">
+    <a class="link" href="<c:url value="/register"/>">Register/Login</a>
+</div>
 Your account not found!<br>
-<a href="<c:url value="/register"/>">Back</a>
+<div class="separator bottom" >
+    <a class="link" href="<c:url value="/register"/>">Back</a>
+</div>
 </body>
 </html>

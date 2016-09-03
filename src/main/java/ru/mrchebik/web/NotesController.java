@@ -83,4 +83,11 @@ public class NotesController {
 
         return "ViewNotes";
     }
+
+    @RequestMapping(value = "/{username}/exit", method = GET)
+    public String view() {
+        UserSession.clear();
+
+        return "index";
+    }
 }

@@ -50,4 +50,9 @@ public class UserSession {
     public static void setUser(User user) {
         UserSession.user = user;
     }
+
+    public static void clear() {
+        id = 0;
+        user = null;
+    }
 }
