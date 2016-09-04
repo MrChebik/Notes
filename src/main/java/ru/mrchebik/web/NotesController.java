@@ -61,11 +61,25 @@ public class NotesController {
                        @RequestParam(value = "hideId", defaultValue = "0") long id,
                        Model model) {
 
+        List<Note> notes = new ArrayList<>(noteRepository.findNotes(UserSession.getUser().getUSER_ID()));
+
         if (id != 0) {
+            if (page != 1 &&
+                    page == UserSession.getPages() &&
+                    (UserSession.getPages() * UserSession.getCount()) - 9 == notes.size() &&
+                    notes.get(notes.size() - 1).getId() == id) {
+                page--;
+                notes.remove(notes.size() - 1);
+            }
+
+            for (int i = 0; i < notes.size(); i++) {
+                if (notes.get(i).getId() == id) {
+                    notes.remove(i);
+                }
+            }
             noteRepository.remove(id);
         }
 
-        List<Note> notes = new ArrayList<>(noteRepository.findNotes(UserSession.getUser().getUSER_ID()));
         UserSession.setPages(notes, UserSession.getCount());
 
         if (notes.size() > UserSession.getCount()) {

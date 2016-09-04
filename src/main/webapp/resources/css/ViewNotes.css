@@ -8,14 +8,15 @@ table, td, th {
 }
 
 .fake-link {
+    color: blue;
     text-decoration: underline;
     cursor: pointer;
 }
 
-.fake-link:link {
-    color: blue;
-}
-
 .fake-link:visited {
     color: purple;
+}
+
+.currentPage {
+    color: darkgreen;
 }

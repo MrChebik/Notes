@@ -49,8 +49,15 @@
                                 <span class="fake-link" id="${1}" onclick="submitData(this.id, '007')">${1}</span> ...
                             </c:when>
                         </c:choose>
-                        <c:forEach begin="${page > 4 ? page - 2 : 1}" end="${page + 4 > pages ? pages : page + 2}" var="page">
-                            <span class="fake-link" id="${page}" onclick="submitData(this.id, '007')">${page}</span>
+                        <c:forEach begin="${page > 4 ? page - 2 : 1}" end="${page + 4 > pages ? pages : page + 2}" var="pageId">
+                            <c:choose>
+                                <c:when test="${page == pageId}">
+                                    <span class="fake-link currentPage" id="${pageId}" onclick="submitData(this.id, '007')">${pageId}</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="fake-link" id="${pageId}" onclick="submitData(this.id, '007')">${pageId}</span>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
                         <c:choose>
                             <c:when test="${page + 4 <= pages}">

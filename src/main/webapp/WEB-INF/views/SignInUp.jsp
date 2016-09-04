@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Sign up</title>
+    <title>Register/Login</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/SignInUp.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/layout.css"/>">
     <script type="text/javascript" src="<c:url value="/resources/js/SignInUp.js"/>"></script>
