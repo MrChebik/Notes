@@ -15,7 +15,6 @@ import java.util.List;
 @Service
 @Transactional
 public class UserDAO extends DAO implements UserRepository {
-
     private final CommandFactory commandFactory = new CommandFactory();
 
     @Override

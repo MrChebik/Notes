@@ -7,7 +7,7 @@
             <column name="USER_ID" />
             <generator class="identity" />
         </id>
-        <property name="username" type="string" length="12" not-null="true" unique="true">
+        <property name="username" type="string">
             <column name="username" length="12" not-null="true" unique="true" />
         </property>
         <property name="password" type="string">
