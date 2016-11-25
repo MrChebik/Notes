@@ -1,15 +1,28 @@
 package ru.mrchebik.model;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by mrchebik on 22.07.16.
  */
+@Entity
+@Table(name = "Users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
     private long USER_ID;
+
+    @Column(unique = true, nullable = false, length = 12)
     private String username;
+
+    @Column(nullable = false, length = 16)
     private String password;
+
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Note> notes = new HashSet<Note>(0);
 
     public User() {

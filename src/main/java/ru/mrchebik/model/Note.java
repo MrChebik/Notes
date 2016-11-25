@@ -1,19 +1,34 @@
 package ru.mrchebik.model;
 
+import javax.persistence.*;
+
 /**
  * Created by mrchebik on 23.07.16.
  */
+@Entity
+@Table(name = "Notes")
 public class Note {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
+
+    @Column(nullable = false, length = 25)
     private String title;
+
+    @Column(nullable = false)
     private String text;
 
     public Note() {
 
     }
 
-    public Note(final long id, final Object object, final String title, final String text) {
+    public Note(final long id, final String title, final String text) {
         this.id = id;
         this.title = title;
         this.text = text;

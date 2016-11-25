@@ -1,17 +1,17 @@
 package ru.mrchebik.web;
 
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.mrchebik.data.NoteRepository;
 import ru.mrchebik.model.Note;
+import ru.mrchebik.service.NoteService;
 import ru.mrchebik.session.UserSession;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,15 +24,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 @RequestMapping("/notes")
 public class NotesController {
-    private NoteRepository noteRepository;
+    @Resource
+    private NoteService noteService;
 
     public NotesController() {
 
-    }
-
-    @Autowired
-    public NotesController(NoteRepository noteRepository) {
-        this.noteRepository = noteRepository;
     }
 
     @RequestMapping(value = "/{username}", method = GET)
@@ -52,7 +48,7 @@ public class NotesController {
     @RequestMapping(value = "/{username}/add", method = POST)
     public void add(@RequestBody String note) {
         JSONObject jsonObject = new JSONObject(note);
-        noteRepository.add(new Note(UserSession.getUser(), jsonObject.getString("title"), jsonObject.getString("text")));
+        noteService.add(new Note(UserSession.getUser(), jsonObject.getString("title"), jsonObject.getString("text")));
     }
 
     @RequestMapping(value = "/{username}/view", method = GET)
@@ -61,7 +57,7 @@ public class NotesController {
                        @RequestParam(value = "hideId", defaultValue = "0") long id,
                        Model model) {
 
-        List<Note> notes = new ArrayList<>(noteRepository.findNotes(UserSession.getUser().getUSER_ID()));
+        List<Note> notes = new ArrayList<>(noteService.findNotes(UserSession.getUser().getUSER_ID()));
 
         if (id != 0) {
             if (page != 1 &&
@@ -77,7 +73,7 @@ public class NotesController {
                     notes.remove(i);
                 }
             }
-            noteRepository.remove(id);
+            noteService.remove(id);
         }
 
         UserSession.setPages(notes, UserSession.getCount());

@@ -1,14 +1,14 @@
 package ru.mrchebik.web;
 
 import org.hibernate.TransactionException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.mrchebik.data.UserRepository;
 import ru.mrchebik.model.User;
+import ru.mrchebik.service.UserService;
 import ru.mrchebik.session.UserSession;
 
+import javax.annotation.Resource;
 import java.util.NoSuchElementException;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -20,15 +20,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
-    private UserRepository userRepository;
+    @Resource
+    private UserService userService;
 
     public RegisterController() {
 
-    }
-
-    @Autowired
-    public RegisterController(UserRepository userRepository) {
-        this.userRepository = userRepository;
     }
 
     @RequestMapping(method = GET)
@@ -43,7 +39,7 @@ public class RegisterController {
 
         if (hide.equals("up")) {
             try {
-                userRepository.add(new User(username, password));
+                userService.add(new User(username, password));
             } catch (TransactionException e) {
                 return "redirect:/register/duplicate";
             }
@@ -51,7 +47,7 @@ public class RegisterController {
 
         User user;
         try {
-            user = userRepository.findUser(username);
+            user = userService.findUser(username);
         } catch (NoSuchElementException e) {
             return "redirect:/register/notExists";
         }
