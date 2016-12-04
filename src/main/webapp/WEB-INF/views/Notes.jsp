@@ -15,7 +15,7 @@
 <body>
 <h1>Notes - Profile</h1>
 <div class="separator top">
-    <span class="text">Welcome, <a class="link" href="/notes/${username}">${username}</a> | <a class="link" href="/notes/${username}/exit">Exit</a></span>
+    <span class="text">Welcome, <a class="link" href="/NotesWeb/notes/${username}">${username}</a> | <a class="link" href="/NotesWeb/notes/${username}/exit">Logout</a></span>
 </div>
 <div>
     <a href="<c:url value="/notes/${username}/add"/>">Add note</a> | <a href="<c:url value="/notes/${username}/view"/>">View notes</a>

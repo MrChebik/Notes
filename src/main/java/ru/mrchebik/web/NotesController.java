@@ -95,9 +95,8 @@ public class NotesController {
     }
 
     @RequestMapping(value = "/{username}/exit", method = GET)
-    public String view() {
+    public String logout() {
         UserSession.clear();
-
         return "index";
     }
 }

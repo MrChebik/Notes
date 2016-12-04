@@ -17,7 +17,7 @@
 <body>
 <h1>Notes - View notes</h1>
 <div class="separator top">
-    <span class="text">Welcome, <a class="link" href="/notes/${username}">${username}</a> | <a class="link" href="/notes/${username}/exit">Exit</a></span>
+    <span class="text">Welcome, <a class="link" href="/NotesWeb/notes/${username}">${username}</a> | <a class="link" href="/NotesWeb/notes/${username}/exit">Logout</a></span>
 </div>
 <div>
     <c:choose>
