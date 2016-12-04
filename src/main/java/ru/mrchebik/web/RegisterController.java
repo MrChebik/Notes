@@ -52,7 +52,7 @@ public class RegisterController {
             return "redirect:/register/notExists";
         }
         UserSession.setUser(user);
-        UserSession.setId(user.getUSER_ID());
+        UserSession.setId(user.getUserId());
         return "redirect:/notes/" + UserSession.getUser().getUsername();
     }
 

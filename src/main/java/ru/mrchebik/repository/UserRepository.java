@@ -9,6 +9,6 @@ import ru.mrchebik.model.User;
  * Created by mrchebik on 08.08.16.
  */
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Query("from ru.mrchebik.model.User where username = :username")
+    @Query(value = "from ru.mrchebik.model.User where username = :username")
     User findByName(@Param("username") String username);
 }

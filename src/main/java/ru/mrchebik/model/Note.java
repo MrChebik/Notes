@@ -15,7 +15,7 @@ public class Note {
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID", nullable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     @Column(nullable = false, length = 25)
@@ -76,4 +76,5 @@ public class Note {
     public void setId(final long id) {
         this.id = id;
     }
+
 }

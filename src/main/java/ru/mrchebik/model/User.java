@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private long USER_ID;
+    private long userId;
 
     @Column(unique = true, nullable = false, length = 12)
     private String username;
@@ -50,12 +50,12 @@ public class User {
         this.password = password;
     }
 
-    public long getUSER_ID() {
-        return USER_ID;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUSER_ID(final long id) {
-        this.USER_ID = id;
+    public void setUserId(final long id) {
+        this.userId = id;
     }
 
     public Set<Note> getNotes() {

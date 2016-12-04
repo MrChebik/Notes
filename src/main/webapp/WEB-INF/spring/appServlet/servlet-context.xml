@@ -17,29 +17,30 @@
     http://www.springframework.org/schema/data/jpa
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="emf"/>
     </bean>
 
-    <bean id="persistenceExceptionTranslationPostProcessor"
-          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="showSql" value="true"/>
-                <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"/>
-            </bean>
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.connection.charSet">UTF-8</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
         </property>
         <property name="packagesToScan" value="ru.mrchebik.model"/>
     </bean>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/NotesWeb?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
+        <property name="url" value="jdbc:mysql://localhost:3306/NotesWeb?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
         <property name="username" value="root" />
         <property name="password" value="root" />
     </bean>
@@ -48,12 +49,14 @@
 
     <jpa:repositories base-package="ru.mrchebik.repository" entity-manager-factory-ref="emf" transaction-manager-ref="transactionManager"/>
 
-    <context:component-scan base-package="ru.mrchebik.service.impl" />
+    <context:component-scan base-package="ru.mrchebik" />
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/views/"
           p:suffix=".jsp"/>
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>

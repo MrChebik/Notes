@@ -57,7 +57,7 @@ public class NotesController {
                        @RequestParam(value = "hideId", defaultValue = "0") long id,
                        Model model) {
 
-        List<Note> notes = new ArrayList<>(noteService.findNotes(UserSession.getUser().getUSER_ID()));
+        List<Note> notes = new ArrayList<>(noteService.findNotes(UserSession.getUser().getUserId()));
 
         if (id != 0) {
             if (page != 1 &&
@@ -85,7 +85,12 @@ public class NotesController {
                 notes = notes.subList((page - 1) * UserSession.getCount(), page * UserSession.getCount());
             }
         }
-
+        for (int i = 0; i < notes.size(); i++) {
+            System.out.println(notes.get(i).getTitle());
+            System.out.println(notes.get(i).getText());
+            System.out.println(notes.get(i).getId());
+            System.out.println(notes.get(i).getUser());
+        }
         model.addAttribute("username", username);
         model.addAttribute("notes", notes);
         model.addAttribute("page", page);

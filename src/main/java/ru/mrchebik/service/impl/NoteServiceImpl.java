@@ -8,6 +8,7 @@ import ru.mrchebik.model.Note;
 import ru.mrchebik.repository.NoteRepository;
 import ru.mrchebik.service.NoteService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +28,14 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<Note> findNotes(final long userId) {
-        return noteRepository.findById(userId);
+        List<Note> notes = new ArrayList<>();
+        for(Object[] object : noteRepository.findByUser(userId)) {
+            String title = String.valueOf(object[0]);
+            String text = String.valueOf(object[1]);
+
+            notes.add(new Note(title, text));
+        }
+        return notes;
     }
 
     @Override
