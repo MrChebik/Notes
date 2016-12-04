@@ -71,6 +71,7 @@ public class NotesController {
             for (int i = 0; i < notes.size(); i++) {
                 if (notes.get(i).getId() == id) {
                     notes.remove(i);
+                    break;
                 }
             }
             noteService.remove(id);
@@ -84,12 +85,6 @@ public class NotesController {
             } else {
                 notes = notes.subList((page - 1) * UserSession.getCount(), page * UserSession.getCount());
             }
-        }
-        for (int i = 0; i < notes.size(); i++) {
-            System.out.println(notes.get(i).getTitle());
-            System.out.println(notes.get(i).getText());
-            System.out.println(notes.get(i).getId());
-            System.out.println(notes.get(i).getUser());
         }
         model.addAttribute("username", username);
         model.addAttribute("notes", notes);

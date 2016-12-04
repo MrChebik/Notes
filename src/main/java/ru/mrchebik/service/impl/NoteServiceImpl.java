@@ -30,10 +30,11 @@ public class NoteServiceImpl implements NoteService {
     public List<Note> findNotes(final long userId) {
         List<Note> notes = new ArrayList<>();
         for(Object[] object : noteRepository.findByUser(userId)) {
-            String title = String.valueOf(object[0]);
-            String text = String.valueOf(object[1]);
+            long id = Long.parseLong(String.valueOf(object[0]));
+            String title = String.valueOf(object[1]);
+            String text = String.valueOf(object[2]);
 
-            notes.add(new Note(title, text));
+            notes.add(new Note(id, title, text));
         }
         return notes;
     }

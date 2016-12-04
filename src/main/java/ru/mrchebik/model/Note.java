@@ -40,11 +40,6 @@ public class Note {
         this.text = text;
     }
 
-    public Note(final String title, final String text) {
-        this.title = title;
-        this.text = text;
-    }
-
     public User getUser() {
         return user;
     }

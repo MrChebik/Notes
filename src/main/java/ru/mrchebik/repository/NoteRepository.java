@@ -11,6 +11,6 @@ import java.util.List;
  * Created by mrchebik on 07.08.16.
  */
 public interface NoteRepository extends JpaRepository<Note, Long> {
-    @Query("select note.title, note.text from ru.mrchebik.model.Note note where note.user.userId = :userId")
+    @Query("select note.id, note.title, note.text from ru.mrchebik.model.Note note where note.user.userId = :userId")
     List<Object[]> findByUser(@Param("userId") long id);
 }
