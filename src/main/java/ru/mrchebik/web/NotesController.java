@@ -27,8 +27,8 @@ public class NotesController {
     @Resource
     private NoteService noteService;
 
-    public NotesController() {
-
+    public NotesController(NoteService noteService) {
+        this.noteService = noteService;
     }
 
     @RequestMapping(value = "/{username}", method = GET)

@@ -8,4 +8,5 @@ import ru.mrchebik.model.User;
 public interface UserService {
     User add(final User user);
     User findUser(final String username);
+    void remove(final long id);
 }

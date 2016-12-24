@@ -1,6 +1,6 @@
 package ru.mrchebik.web;
 
-import org.hibernate.TransactionException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,7 +9,6 @@ import ru.mrchebik.service.UserService;
 import ru.mrchebik.session.UserSession;
 
 import javax.annotation.Resource;
-import java.util.NoSuchElementException;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -23,8 +22,8 @@ public class RegisterController {
     @Resource
     private UserService userService;
 
-    public RegisterController() {
-
+    public RegisterController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(method = GET)
@@ -40,15 +39,12 @@ public class RegisterController {
         if (hide.equals("up")) {
             try {
                 userService.add(new User(username, password));
-            } catch (TransactionException e) {
+            } catch (DataIntegrityViolationException e) {
                 return "redirect:/register/duplicate";
             }
         }
-
-        User user;
-        try {
-            user = userService.findUser(username);
-        } catch (NoSuchElementException e) {
+        User user = userService.findUser(username);
+        if (user == null) {
             return "redirect:/register/notExists";
         }
         UserSession.setUser(user);

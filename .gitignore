@@ -5,6 +5,7 @@
 out
 
 # Project settings files
+/.idea/artifacts/
 /.idea/copyright/
 /.idea/inspectionProfiles/
 /.idea/libraries/

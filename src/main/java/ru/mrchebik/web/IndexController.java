@@ -12,7 +12,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping("/")
 public class IndexController {
     @RequestMapping(method = GET)
-    public String registerStage() {
+    public String indexPage() {
         return "index";
     }
 }

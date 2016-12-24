@@ -17,7 +17,7 @@ public class UserSession {
     private static long id;
     private static int count = 10;
     private static int pages;
-    private static User user;
+    private static User user = new User("unknown", "unknown");
 
     public static void setId(final long id) {
         UserSession.id = id;
