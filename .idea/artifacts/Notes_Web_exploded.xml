@@ -50,14 +50,19 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.4.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: joda-time:joda-time-hibernate:1.4" />
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.9.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.4.RELEASE" />
-          <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.22.0-CR1" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.2.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.2.1.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.mockito:mockito-all:2.0.2-beta" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.2.1.RELEASE" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Notes/web/Web" />

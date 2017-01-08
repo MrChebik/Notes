@@ -11,11 +11,15 @@
 <head>
     <title>Notes</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/layout.css"/>">
+    <script type="text/javascript" src="<c:url value="/resources/js/logout.js"/>"></script>
 </head>
 <body>
 <h1>Notes - Profile</h1>
+<form action="<c:url value="/logout"/>" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
 <div class="separator top">
-    <span class="text">Welcome, <a class="link" href="/NotesWeb/notes/${username}">${username}</a> | <a class="link" href="/NotesWeb/notes/${username}/exit">Logout</a></span>
+    <span class="text">Welcome, <a class="link" href="/NotesWeb/notes/${username}">${username}</a> | <a class="link" href="javascript:formSubmit()">Logout</a></span>
 </div>
 <div>
     <a href="<c:url value="/notes/${username}/add"/>">Add note</a> | <a href="<c:url value="/notes/${username}/view"/>">View notes</a>

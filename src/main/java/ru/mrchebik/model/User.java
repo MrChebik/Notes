@@ -8,26 +8,29 @@ import java.util.Set;
  * Created by mrchebik on 22.07.16.
  */
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private long userId;
 
-    @Column(unique = true, nullable = false, length = 12)
+    @Column(unique = true, nullable = false, length = 60)
     private String username;
 
-    @Column(nullable = false, length = 16)
+    @Column(nullable = false, length = 60)
     private String password;
+
+    private String passwordConfirm;
 
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Note> notes = new HashSet<Note>(0);
 
-    public User() {
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
+    private Set<Role> roles;
 
-    }
+    public User() {}
 
     public User(String username, String password) {
         this.username = username;
@@ -64,5 +67,21 @@ public class User {
 
     public void setNotes(Set<Note> notes) {
         this.notes = notes;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 }

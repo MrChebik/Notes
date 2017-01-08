@@ -6,9 +6,8 @@ import javax.persistence.*;
  * Created by mrchebik on 23.07.16.
  */
 @Entity
-@Table(name = "Notes")
+@Table(name = "notes")
 public class Note {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)

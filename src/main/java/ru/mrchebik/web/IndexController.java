@@ -15,4 +15,9 @@ public class IndexController {
     public String indexPage() {
         return "index";
     }
+
+    @RequestMapping("accessDenied")
+    public String accessDeniedPage() {
+        return "AccessDenied";
+    }
 }

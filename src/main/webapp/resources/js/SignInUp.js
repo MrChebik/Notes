@@ -13,13 +13,26 @@ function check(id) {
         element.style.borderColor = 'black';
         error = 0;
     }
+
+    var passwordConfirm = document.getElementById('passwordConfirm');
+
+    if (passwordConfirm.value != document.getElementById('password').value && passwordConfirm.value != '') {
+        passwordConfirm.style.borderColor = 'red';
+        error = 1;
+    } else {
+        passwordConfirm.style.borderColor = 'black';
+        error = 0;
+    }
+
+    if (passwordConfirm.value == '') {
+        error = 1;
+    }
 }
 
-function checkError(id) {
+function checkError() {
     if (error == 0) {
-        document.getElementById("007").value = id;
         document.getElementById("form1").submit();
     } else {
-        alert("Check your login and password, they must not be red.");
+        alert("Check your login and password, they must not be red or empty.");
     }
 }

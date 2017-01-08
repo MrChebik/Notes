@@ -1,6 +1,7 @@
 package ru.mrchebik.web;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.mrchebik.model.Note;
 import ru.mrchebik.service.NoteService;
+import ru.mrchebik.service.UserService;
 import ru.mrchebik.session.UserSession;
 
 import javax.annotation.Resource;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,15 +29,17 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class NotesController {
     @Resource
     private NoteService noteService;
+    @Autowired
+    private UserService userService;
 
     public NotesController(NoteService noteService) {
         this.noteService = noteService;
     }
 
-    @RequestMapping(value = "/{username}", method = GET)
-    public String notes(@PathVariable String username,
+    @RequestMapping(value = "/", method = GET)
+    public String notes(Principal principal,
                         Model model) {
-        model.addAttribute("username", username);
+        model.addAttribute("username", principal.getName());
         return "Notes";
     }
 
@@ -46,18 +51,19 @@ public class NotesController {
     }
 
     @RequestMapping(value = "/{username}/add", method = POST)
-    public void add(@RequestBody String note) {
+    public void add(@RequestBody String note,
+                    Principal principal) {
         JSONObject jsonObject = new JSONObject(note);
-        noteService.add(new Note(UserSession.getUser(), jsonObject.getString("title"), jsonObject.getString("text")));
+        noteService.add(new Note(userService.findUser(principal.getName()), jsonObject.getString("title"), jsonObject.getString("text")));
     }
 
     @RequestMapping(value = "/{username}/view", method = GET)
     public String view(@PathVariable String username,
                        @RequestParam(value = "hide", defaultValue = "1") int page,
                        @RequestParam(value = "hideId", defaultValue = "0") long id,
-                       Model model) {
-
-        List<Note> notes = new ArrayList<>(noteService.findNotes(UserSession.getUser().getUserId()));
+                       Model model,
+                       Principal principal) {
+        List<Note> notes = new ArrayList<>(noteService.findNotes(userService.findUser(principal.getName()).getUserId()));
 
         if (id != 0) {
             if (page != 1 &&
@@ -92,11 +98,5 @@ public class NotesController {
         model.addAttribute("pages", UserSession.getPages());
 
         return "ViewNotes";
-    }
-
-    @RequestMapping(value = "/{username}/exit", method = GET)
-    public String logout() {
-        UserSession.clear();
-        return "index";
     }
 }

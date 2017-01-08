@@ -1,5 +1,9 @@
-#username, #password {
+#username, #password, #passwordConfirm {
     width: 95px;
     padding: 2px;
     border: 1px solid black;
+}
+
+.login-box {
+    margin-left: 10px;
 }

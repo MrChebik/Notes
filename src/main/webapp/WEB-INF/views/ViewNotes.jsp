@@ -13,11 +13,15 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/ViewNotes.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/layout.css"/>">
     <script type="text/javascript" src="<c:url value="/resources/js/ViewNotes.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/logout.js"/>"></script>
 </head>
 <body>
 <h1>Notes - View notes</h1>
+<form action="<c:url value="/logout"/>" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
 <div class="separator top">
-    <span class="text">Welcome, <a class="link" href="/NotesWeb/notes/${username}">${username}</a> | <a class="link" href="/NotesWeb/notes/${username}/exit">Logout</a></span>
+    <span class="text">Welcome, <a class="link" href="/NotesWeb/notes/${username}">${username}</a> | <a class="link" href="javascript:formSubmit()">Logout</a></span>
 </div>
 <div>
     <c:choose>
@@ -71,7 +75,7 @@
     </c:choose>
 </div>
 <div class="separator bottom" >
-    <a class="link" href="<c:url value="/notes/${username}"/>">Back</a>
+    <a class="link" href="<c:url value="/notes/"/>">Back</a>
 </div>
 </body>
 </html>
