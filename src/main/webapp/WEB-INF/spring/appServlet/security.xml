@@ -12,6 +12,8 @@
         <beans:constructor-arg name="strength" value="11" />
     </beans:bean>
 
+    <global-method-security secured-annotations="enabled" />
+
     <http auto-config="true" >
         <intercept-url pattern="/notes/**" access="authenticated" />
         <intercept-url pattern="/" access="permitAll" />

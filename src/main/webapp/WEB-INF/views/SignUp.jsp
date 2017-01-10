@@ -23,6 +23,11 @@
 </div>
 <div class="login-box">
     <form:form id="form1" modelAttribute="userForm" method="post">
+        <c:if test="${error != null}">
+            <p>
+                Duplicate user.
+            </p>
+        </c:if>
         <table>
             <tr>
                 <td>

@@ -26,8 +26,9 @@ public class AuthController {
     @Autowired
     private SecurityService securityService;
 
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService, SecurityService securityService) {
         this.userService = userService;
+        this.securityService = securityService;
     }
 
     @RequestMapping(value = "/register", method = GET)
@@ -37,16 +38,23 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/register", method = POST)
-    public String registration(@ModelAttribute("userForm") User userForm) {
-        userService.add(userForm);
+    public String registration(@ModelAttribute("userForm") User userForm,
+                               Model model) {
+        try {
+            userService.add(userForm);
+        } catch (Exception e) {
+            model.addAttribute("error", "SQLError");
+
+            return "SignUp";
+        }
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 
         return "redirect:/notes/";
     }
 
     @RequestMapping(value = "/login", method = GET)
-    public String login( @RequestParam(value="error",required = false) String error,
-                         @RequestParam(value = "logout", required = false) String logout,
+    public String login(@RequestParam(value = "error", required = false) String error,
+                        @RequestParam(value = "logout", required = false) String logout,
                          Model model) {
         if (error != null) {
             model.addAttribute(error);

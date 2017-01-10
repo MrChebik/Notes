@@ -25,7 +25,7 @@
     <form id="form1" action="<c:url value="/j_spring_security_check"/>" method="post">
         <c:if test="${param.error != null}">
             <p>
-                Invalid username and password.
+                Invalid username or password.
             </p>
         </c:if>
         <c:if test="${param.logout != null}">

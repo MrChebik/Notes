@@ -1,6 +1,7 @@
 package ru.mrchebik.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUser(final String username) {
         return userRepository.findByName(username);
+    }
+
+    @Override
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public void remove(final long id) {
+        userRepository.delete(id);
     }
 }
