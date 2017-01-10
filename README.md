@@ -4,7 +4,7 @@ Notes can help you to create notes.
 The technologies, that are used:
 - Spring MVC, Data, Security
 - Hibernate, MySQL
-- JUnit, Mockito
+- JUnit, Mockito (last commit -- issue tests, have a problems)
 - JSP, JS, CSS, JQuery (Ajax), JSON
 - Tomcat, Maven
 
